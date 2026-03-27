@@ -1,0 +1,94 @@
+[package]
+name = "soma-engine"
+version.workspace = true
+edition.workspace = true
+description = "SNN Engine + Inference + Telemetry + AI (Tier 1 — headless)"
+
+[features]
+default = ["gpu", "image-gen", "ingest"]
+gpu = []
+image-gen = []
+ingest = []
+quai_integration = []
+quai_testing = ["quai_integration"]
+julia = ["jlrs"]
+
+[[bin]]
+name = "ship-ingest-cli"
+path = "src/bin/ingest_cli.rs"
+
+[[bin]]
+name = "market_pilot"
+path = "src/bin/market_pilot.rs"
+
+[[bin]]
+name = "live_supervisor"
+path = "src/bin/live_supervisor.rs"
+
+
+
+
+[lib]
+name = "soma_engine"
+path = "src/lib.rs"
+
+[dependencies]
+# UI and Core Application
+tokio = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+schemars = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+nvml-wrapper = { workspace = true }
+cust = { workspace = true }
+jlrs = { workspace = true, optional = true }
+gnuplot = "0.0.43"
+synapse-link = { workspace = true }
+myelin-accelerator = { workspace = true }
+thiserror = { workspace = true }
+# gRPC and IPC dependencies for V2 telemetry
+tonic = { version = "0.8", features = ["tls"] }
+prost = "0.11"
+crossbeam-channel = "0.5"
+flatbuffers = { workspace = true }
+zmq = { workspace = true }
+# Explicitly enable TLS for wss:// dYdX websocket connections.
+tokio-tungstenite = { workspace = true, features = ["native-tls"] }
+
+
+
+# Utilities
+chrono = { version = "0.4", features = ["serde"] }
+clap = { workspace = true }
+reqwest = { workspace = true }
+regex = { workspace = true }
+fancy-regex = { workspace = true }
+lazy_static = { workspace = true }
+serialport = { workspace = true }
+i2cdev = { workspace = true }
+ads1x1x = { workspace = true }
+embedded-hal = { workspace = true }
+rayon = { workspace = true }
+walkdir = { workspace = true }
+base64 = { workspace = true }
+sha2 = { workspace = true }
+futures = { workspace = true }
+nix = { workspace = true }
+pdf-extract = "0.7"
+zip = "0.6"
+dirs-next = "2.0"
+rand = "0.8"
+
+# AI & Inference
+rig-core = "0.31.0"
+hf-hub = { workspace = true }
+tokenizers = { workspace = true }
+image = { workspace = true }
+
+# Candle
+candle-core = { version = "0.9.2", features = ["cuda"] }
+candle-nn = { workspace = true }
+candle-transformers = "0.9.2"
+half = "2"
+memmap2 = { workspace = true }
