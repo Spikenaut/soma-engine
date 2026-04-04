@@ -1,0 +1,7 @@
+/home/raulmc/soma-engine/target/debug/deps/subtle-867ac1ff5347dd7b.d: /home/raulmc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/subtle-2.6.1/src/lib.rs
+
+/home/raulmc/soma-engine/target/debug/deps/libsubtle-867ac1ff5347dd7b.rlib: /home/raulmc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/subtle-2.6.1/src/lib.rs
+
+/home/raulmc/soma-engine/target/debug/deps/libsubtle-867ac1ff5347dd7b.rmeta: /home/raulmc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/subtle-2.6.1/src/lib.rs
+
+/home/raulmc/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/subtle-2.6.1/src/lib.rs:

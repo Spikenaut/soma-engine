@@ -1,0 +1,1 @@
+cargo:rustc-env=MIME_TYPES_GENERATED_PATH=/home/raulmc/soma-engine/target/release/build/mime_guess-1f14e4273f777fcd/out/mime_types_generated.rs

@@ -1,0 +1,18 @@
+/home/raulmc/soma-engine/target/release/deps/myelin_accelerator-fea5ab8da257c866.d: /home/raulmc/myelin-accelerator/myelin-accelerator/src/lib.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/mod.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/accelerator.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/context.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/error.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/kernel.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/memory.rs /home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/spiking_network_sm_120.ptx /home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/vector_similarity_sm_120.ptx /home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/satsolver_sm_120.ptx
+
+/home/raulmc/soma-engine/target/release/deps/libmyelin_accelerator-fea5ab8da257c866.rlib: /home/raulmc/myelin-accelerator/myelin-accelerator/src/lib.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/mod.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/accelerator.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/context.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/error.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/kernel.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/memory.rs /home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/spiking_network_sm_120.ptx /home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/vector_similarity_sm_120.ptx /home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/satsolver_sm_120.ptx
+
+/home/raulmc/soma-engine/target/release/deps/libmyelin_accelerator-fea5ab8da257c866.rmeta: /home/raulmc/myelin-accelerator/myelin-accelerator/src/lib.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/mod.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/accelerator.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/context.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/error.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/kernel.rs /home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/memory.rs /home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/spiking_network_sm_120.ptx /home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/vector_similarity_sm_120.ptx /home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/satsolver_sm_120.ptx
+
+/home/raulmc/myelin-accelerator/myelin-accelerator/src/lib.rs:
+/home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/mod.rs:
+/home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/accelerator.rs:
+/home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/context.rs:
+/home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/error.rs:
+/home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/kernel.rs:
+/home/raulmc/myelin-accelerator/myelin-accelerator/src/gpu/memory.rs:
+/home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/spiking_network_sm_120.ptx:
+/home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/vector_similarity_sm_120.ptx:
+/home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out/satsolver_sm_120.ptx:
+
+# env-dep:OUT_DIR=/home/raulmc/soma-engine/target/release/build/myelin-accelerator-2f2817d6d1167ad6/out

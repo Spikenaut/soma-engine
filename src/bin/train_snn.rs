@@ -34,7 +34,8 @@ use std::path::PathBuf;
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// Path to JSONL telemetry dataset (NeuromorphicSnapshot records)
-    #[arg(long, default_value = "DATA/research/neuromorphic_data.jsonl")]
+    /// Can be a single file OR a directory containing chunk files (*chunk*)
+    #[arg(long, default_value = "/home/raulmc/Spikenaut-Vault/mining/processed/")]
     data: PathBuf,
 
     /// Number of training epochs over the dataset
@@ -64,6 +65,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     println!("Mode           : {}", args.mode);
     println!("Telemetry Path : {}", args.data.display());
     println!("Output  : {}", args.out.display());
+    if args.data.is_dir() {
+        println!("Data Mode : CHUNKED DIRECTORY (auto-loads *chunk* files)");
+    } else {
+        println!("Data Mode : SINGLE FILE");
+    }
 
     // ── FPGA scaling analysis ─────────────────────────────────────────
     println!();

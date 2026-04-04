@@ -1,13 +1,13 @@
 //! Neuromorphic Learning Trainer
-//! 
+//!
 //! This module provides the infrastructure for "Off-line Training" (Path B).
-//! It replays recorded telemetry data from the Gold Dataset 
+//! It replays recorded telemetry data from the Gold Dataset
 //! into the Spiking Inference Engine to evolve thresholds, weights,
 //! and connectivity via STDP.
 
 use std::fs::File;
 use std::io::{BufRead, BufReader};
-use std::path::Path;
+use std::path::{Path, PathBuf};
 // use serde::{Deserialize, Serialize};
 // use crate::hardware_bridge::GpuTelemetry;
 use crate::snn::engine::SpikingInferenceEngine;
@@ -484,13 +484,37 @@ impl EpochTrainer {
         (reward, spike_count)
     }
 
-    /// Load and validate telemetry samples from a JSONL file.
+    /// Load and validate telemetry samples from a JSONL file or directory.
+    ///
+    /// - If `path` is a **file**, loads that single JSONL file (legacy behavior).
+    /// - If `path` is a **directory**, loads all files matching `*chunk*` pattern
+    ///   in sorted order (supports chunked datasets like `node_sync_chunk_00`, etc.).
     ///
     /// Accepts any record that deserialises to `NeuromorphicSnapshot` with
     /// `power_w > 0` (skips idle/corrupt entries silently).
     /// Returns `Err` only on I/O failures.
     pub fn load_samples(
         path: impl AsRef<Path>,
+    ) -> std::io::Result<Vec<NeuromorphicSnapshot>> {
+        let path = path.as_ref();
+
+        if path.is_dir() {
+            // Directory mode: load all chunk files
+            Self::load_chunked_dir(path)
+        } else if path.is_file() {
+            // Single file mode: legacy behavior
+            Self::load_single_file(path)
+        } else {
+            Err(std::io::Error::new(
+                std::io::ErrorKind::NotFound,
+                format!("Data path not found: {}", path.display()),
+            ))
+        }
+    }
+
+    /// Load samples from a single JSONL file.
+    fn load_single_file(
+        path: &Path,
     ) -> std::io::Result<Vec<NeuromorphicSnapshot>> {
         let file   = File::open(path)?;
         let reader = std::io::BufReader::new(file);
@@ -505,6 +529,58 @@ impl EpochTrainer {
                 }
             }
         }
+        Ok(samples)
+    }
+
+    /// Load samples from all chunk files in a directory.
+    fn load_chunked_dir(
+        dir_path: &Path,
+    ) -> std::io::Result<Vec<NeuromorphicSnapshot>> {
+        let mut samples = Vec::new();
+
+        // Collect chunk files (exclude .md, .json, etc.)
+        let mut chunk_files: Vec<PathBuf> = Vec::new();
+        for entry in std::fs::read_dir(dir_path)? {
+            let entry = entry?;
+            let path = entry.path();
+            if !path.is_file() {
+                continue;
+            }
+            if let Some(name) = path.file_name().and_then(|n| n.to_str()) {
+                // Match files containing "chunk" but not metadata/docs
+                if name.contains("chunk")
+                    && !name.ends_with(".md")
+                    && !name.ends_with(".json")
+                    && !name.ends_with(".jsonl")
+                {
+                    chunk_files.push(path);
+                }
+            }
+        }
+
+        // Sort for deterministic order
+        chunk_files.sort();
+
+        if chunk_files.is_empty() {
+            return Err(std::io::Error::new(
+                std::io::ErrorKind::NotFound,
+                format!("No chunk files found in directory: {}", dir_path.display()),
+            ));
+        }
+
+        eprintln!("Loading {} chunk files...", chunk_files.len());
+        for (i, chunk_file) in chunk_files.iter().enumerate() {
+            eprintln!(
+                "  [{}/{}] Loading {}...",
+                i + 1,
+                chunk_files.len(),
+                chunk_file.file_name().unwrap_or_default().to_string_lossy()
+            );
+            let mut chunk_samples = Self::load_single_file(chunk_file)?;
+            eprintln!("    {} records", chunk_samples.len());
+            samples.append(&mut chunk_samples);
+        }
+
         Ok(samples)
     }
 

@@ -1,0 +1,4 @@
+    Updating crates.io index
+error: no matching package named `myelin-accelerator` found
+location searched: crates.io index
+required by package `soma-engine v0.9.2 (/home/raulmc/soma-engine)`

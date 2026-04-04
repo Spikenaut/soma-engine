@@ -9,7 +9,7 @@ repository = "https://github.com/rmems/soma-engine"
 
 [features]
 default = ["gpu", "image-gen", "ingest"]
-gpu = []
+gpu = ["candle-core", "candle-nn", "candle-transformers", "half", "myelin-accelerator"]
 image-gen = []
 ingest = []
 quai_integration = []
@@ -85,8 +85,13 @@ tokenizers = "0.22.0"
 image = "0.24"
 
 # Candle
-candle-core = { version = "0.9.2", features = ["cuda"] }
+candle-core = "0.9.2"
 candle-nn = "0.9.2"
 candle-transformers = "0.9.2"
 half = "2"
 memmap2 = { version = "0.9.3", features = ["stable_deref_trait"] }
+
+# Local patches for unpublished crates
+[patch.crates-io]
+myelin-accelerator = { path = "/home/raulmc/myelin-accelerator/myelin-accelerator" }
+synapse-link = { path = "/home/raulmc/synapse-link" }
