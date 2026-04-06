@@ -1,8 +1,0 @@
-cargo:rerun-if-changed=cu/common.cuh
-cargo:rerun-if-changed=cu/spiking_network.cu
-cargo:rerun-if-changed=cu/vector_similarity.cu
-cargo:rerun-if-changed=cu/satsolver.cu
-cargo:rerun-if-changed=build.rs
-cargo:warning=✓ compiled spiking_network.cu → spiking_network_sm_120.ptx (PTX version patched to 8.5)
-cargo:warning=✓ compiled vector_similarity.cu → vector_similarity_sm_120.ptx (PTX version patched to 8.5)
-cargo:warning=✓ compiled satsolver.cu → satsolver_sm_120.ptx (PTX version patched to 8.5)
