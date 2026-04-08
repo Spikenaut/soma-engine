@@ -1,1 +1,0 @@
-// diagnostics/fault stub.
