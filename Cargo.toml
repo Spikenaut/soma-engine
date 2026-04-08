@@ -1,9 +1,9 @@
 [package]
 name = "soma-engine"
 version = "0.9.2"
-edition = "2021"
+edition = "2024"
 description = "SNN Engine + Inference + Telemetry + AI (Tier 1 — headless)"
-authors = ["Raul Mc <raulmc@example.com>"]
+authors = ["Raul Montoya Cardenas <montoya34raul@gmail.com>"]
 license = "GPL-3.0"
 repository = "https://github.com/rmems/soma-engine"
 
