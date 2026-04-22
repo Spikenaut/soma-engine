@@ -1,29 +1,26 @@
 [package]
-name = "soma-engine"
-version = "0.9.2"
+name = "brainstem-daemon"
+version = "0.1.2"
 edition = "2024"
 description = "SNN Engine + Inference + Telemetry + AI (Tier 1 — headless)"
 authors = ["Raul Montoya Cardenas <montoya34raul@gmail.com>"]
 license = "GPL-3.0"
-repository = "https://github.com/rmems/soma-engine"
+repository = "https://github.com/Limen-Neural/brainstem-daemon"
 
 [dependencies]
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
+corpus-ipc = { git = "https://github.com/Limen-Neural/corpus-ipc", features = ["zmq"] }
+neuromod = "0.4.0"
 serde = { version = "1", features = ["derive"] }
+serde_json = "1"
 toml = "0.8"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["fmt", "env-filter"] }
 tokio = { version = "1", features = ["full"] }
 dirs = "5"
-# Placeholder until integrated
-flatbuffers = "25.2.10"
-
-# Optional local crates (commented until present)
-# neuromod = { path = "./crates/neuromod" }
-# spikenaut-spine = { path = "./crates/spikenaut-spine" }
+zmq = "0.10"
 
 [[bin]]
 name = "soma-daemon"
 path = "src/bin/soma_daemon.rs"
-

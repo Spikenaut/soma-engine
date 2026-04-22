@@ -1,17 +1,16 @@
-# 🏛️ Soma-Engine
+# Brainstem Daemon
 
 High-performance spiking neural-network runtime written in Rust.
 
 > **Note**  
-> Training / weight-optimization lives in the separate `ballast-lab` project; `soma-engine` is *inference-only*.
+> Training / weight-optimization lives in the separate `plasticity-lab` project; `brainstem-daemon` is *inference-only*.
 
 ---
 
 ## Features
 - Modular `neuromod::SpikingNetwork` core (CPU; SIMD ready)
-- Zero-copy I/O via **FlatBuffers**
-- High-frequency networking over **ZeroMQ PUB/SUB**
-- New **`soma-daemon`** binary for headless background execution
+- High-frequency networking over **ZeroMQ PUB/SUB** via `corpus-ipc`
+- Headless **`soma-daemon`** binary for background execution
 
 ---
 
@@ -31,7 +30,9 @@ The binary will be located at `target/release/soma-daemon`.
 # ~/.config/soma/daemon.toml
 
 # Engine
-network_size   = 16        # neurons
+lif_count      = 16        # LIF neurons
+izh_count      = 5         # Izhikevich neurons
+channels       = 16        # expected input channels
 model_path     = "~/models/soma16.mem" # weights/thresholds
 
 # Runtime
@@ -40,7 +41,7 @@ log_level      = "info"    # error|warn|info|debug|trace
 
 # ZMQ
 spine_sub_port = 5555      # stimuli in
-o spine_pub_port = 5556      # spikes out
+spine_pub_port = 5556      # spikes out
 ```
 
 ---
